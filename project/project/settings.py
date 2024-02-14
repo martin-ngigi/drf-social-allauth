@@ -37,6 +37,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # Third party libraries
+    'rest_framework',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+    # 'allauth.socialaccount.providers.twitter',
 ]
 
 MIDDLEWARE = [
@@ -47,9 +55,53 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    # Add the account middleware for third party authentication:
+    "allauth.account.middleware.AccountMiddleware",
+    # 'allauth.socialaccount.middleware.SocialAccountMiddleware',
+
 ]
 
 ROOT_URLCONF = 'project.urls'
+
+
+# Provider specific settings
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'APP': {
+            'client_id': '196904434467-ujkn6pkhgfmcp65e5nmmpskac39m096h.apps.googleusercontent.com',
+            'secret': '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',
+            'key': ''
+        },
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        },
+        'FETCH_USERINFO' : True
+    },
+    # 'twitter': {
+    #     'APP': {
+    #         'client_id': 'cEZQNHFfTllwdl9yT25EU1BkVmM6MTpjaQ',
+    #         'secret': 'wX5oqWgTdfUatWbce7m1jMtlkCK-aAc4Gu6TIDjYDcfL6sv0JC',
+    #         'key': ''
+    #     }
+    # },
+}
+
+AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by email
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+
+SITE_ID = 1
+
 
 TEMPLATES = [
     {

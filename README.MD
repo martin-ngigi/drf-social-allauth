@@ -2,7 +2,8 @@
 ```
 pip install django
 pip install djangorestframework
-pip install django djangorestframework django-allauth
+pip install django-allauth
+pip install django django-allauth
 ```
 
 - Link: 
@@ -49,3 +50,6 @@ http://127.0.0.1:8000
 http://127.0.0.1:8000
 http://127.0.0.1:8000/accounts/google/login/callback/
 ```
+
+# LOGIN WITH ALLAUTH:
+- URL : http://127.0.0.1:8000/accounts/login/

@@ -34,8 +34,3 @@ python3 manage.py startapp social_auth
 ```
 python3 manage.py createsuperuser
 ```
-
-- Create super usr
-```
-python3 manage.py createsuperuser
-```
