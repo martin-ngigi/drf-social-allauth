@@ -90,8 +90,8 @@ SOCIALACCOUNT_PROVIDERS = {
     },
     # 'twitter': {
     #     'APP': {
-    #         'client_id': 'cEZQNHFfTllwdl9yT25EU1BkVmM6MTpjaQ',
-    #         'secret': 'wX5oqWgTdfUatWbce7m1jMtlkCK-aAc4Gu6TIDjYDcfL6sv0JC',
+    #         'client_id': os.getenv("TWITTER_API_KEY"),
+    #         'secret': 'os.getenv("TWITTER_CONSUMER_SECRET")',
     #         'key': ''
     #     }
     # },
