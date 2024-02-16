@@ -3,7 +3,8 @@
 pip install django
 pip install djangorestframework
 pip install django-allauth
-pip install django django-allauth
+pip install python-dotenv
+pip install mysql-connector-python
 ```
 
 - Link: 
@@ -53,3 +54,6 @@ http://127.0.0.1:8000/accounts/google/login/callback/
 
 # LOGIN WITH ALLAUTH:
 - URL : http://127.0.0.1:8000/accounts/login/
+
+# all users url:
+- http://127.0.0.1:8000/users/all/

@@ -27,7 +27,7 @@ python3 manage.py runserver
 - Create apps
 ```
 python3 manage.py startapp authentication
-python3 manage.py startapp social_auth
+python3 manage.py startapp profile_account
 ```
 
 - Create super admin

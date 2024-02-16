@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+from dotenv import load_dotenv
+import os
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -45,6 +48,9 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     # 'allauth.socialaccount.providers.twitter',
+
+    # Local apps
+    'profile_account',
 ]
 
 MIDDLEWARE = [
@@ -69,8 +75,8 @@ ROOT_URLCONF = 'project.urls'
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
         'APP': {
-            'client_id': '196904434467-ujkn6pkhgfmcp65e5nmmpskac39m096h.apps.googleusercontent.com',
-            'secret': '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',
+            'client_id': os.getenv("GOOGLE_CLIENT_ID"),
+            'secret': os.getenv("GOOGLE_CLIENT_SECRET"),
             'key': ''
         },
         'SCOPE': [
@@ -99,7 +105,14 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'allauth.account.auth_backends.AuthenticationBackend',
+        'rest_framework.authentication.SessionAuthentication',
+    ),
+}
 
+ACCOUNT_EMAIL_VERIFICATION = 'none'  # Disable email verification for simplicity in this example
 SITE_ID = 1
 
 
@@ -131,6 +144,21 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# MYSQL DB
+# DATABASES = {
+#     'default': {
+#         'NAME': '<--my_db_name-->',
+#         'ENGINE': 'mysql.connector.django',   # 'django.db.backends.mysql'
+#         'USER': 'root',
+#         'PASSWORD': '',
+#         'HOST': 'localhost',
+#         'PORT': 3306,
+#         'OPTIONS': {
+#             'autocommit': True,
+#         },
+#     }
+# }
 
 
 # Password validation
